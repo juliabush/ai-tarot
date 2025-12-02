@@ -16,5 +16,9 @@ export default function HomePage() {
     videoRefs.forEach((ref) => ref.current?.play());
   }, []);
 
+  const fullText = "Your question, the Universe's answer";
+  const [displayedText, setDisplayedText] = useState("");
+  const indexRef = useRef(0);
+
   return <div></div>;
 }
