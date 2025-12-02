@@ -12,5 +12,9 @@ export default function HomePage() {
     useRef<HTMLVideoElement>(null),
   ];
 
+  useEffect(() => {
+    videoRefs.forEach((ref) => ref.current?.play());
+  }, []);
+
   return <div></div>;
 }
