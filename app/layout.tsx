@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen bg-gradient-to-b from-purple-700 to-purple-900 text-white">
         <Navbar />
         <Container>{children}</Container>
       </body>
