@@ -1,4 +1,5 @@
 import { TarotCard } from "./tarot_input";
+import TarotCardDisplay from "./tarot_card_display";
 
 interface ResponseModalProps {
   question: string;
@@ -23,6 +24,7 @@ export default function ResponseModal({
           ? question.trim()
           : question.trim() + "?"}
       </h2>
+      <TarotCardDisplay selectedCards={selectedCards} />
     </div>
   );
 }
