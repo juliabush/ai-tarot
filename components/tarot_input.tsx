@@ -11,3 +11,10 @@ export interface TarotCard {
   name: string;
   url: string;
 }
+
+const [question, setQuestion] = useState("");
+const [response, setResponse] = useState<string | null>(null);
+const [displayedText, setDisplayedText] = useState("");
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
+const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
