@@ -18,3 +18,24 @@ const [displayedText, setDisplayedText] = useState("");
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
 const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
+
+async function handleAsk() {
+  if (!question.trim()) {
+    setError("Please enter a question before asking.");
+    return;
+  }
+
+  setError("");
+  setLoading(true);
+  setResponse(null);
+  setDisplayedText("");
+  setSelectedCards([]);
+
+  const cards = pickRandomCards(tarotCards, 3);
+  setSelectedCards(cards);
+
+  const cardNames = cards.map((c) => c.name).join(", ");
+  const prompt = `Question: ${question.trim()}${
+    question.trim().endsWith("?") ? "" : "?"
+  } 
+Tarot cards drawn: ${cardNames}. Include these cards in your answer.`;
