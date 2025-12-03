@@ -1,6 +1,8 @@
+import { Dispatch, SetStateAction } from "react";
+
 export async function typeWriterAppend(
   text: string,
-  setDisplayedText: (val: string) => void,
+  setDisplayedText: Dispatch<SetStateAction<string>>,
   delay = 50
 ) {
   for (let i = 0; i < text.length; i++) {
