@@ -25,3 +25,9 @@ body {
     transparent 70%
   );
 }
+
+@media (max-width: 380px) {
+  body {
+    overflow: visible;
+  }
+}
