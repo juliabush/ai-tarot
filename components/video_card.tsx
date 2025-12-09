@@ -5,6 +5,7 @@ interface VideoCardProps {
   videoRef: React.Ref<HTMLVideoElement>;
 }
 
+// displays the cards on the main page as gifs
 export default function VideoCard({ src, videoRef }: VideoCardProps) {
   return (
     <div className="flex flex-col items-center">
