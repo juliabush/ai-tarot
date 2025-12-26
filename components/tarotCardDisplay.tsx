@@ -1,4 +1,4 @@
-import { TarotCard } from "./tarot_input";
+import { TarotCard } from "../lib/types";
 
 export default function TarotCardDisplay({
   selectedCards,

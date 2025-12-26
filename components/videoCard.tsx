@@ -1,9 +1,5 @@
 "use client";
-
-interface VideoCardProps {
-  src: string;
-  videoRef: React.Ref<HTMLVideoElement>;
-}
+import { VideoCardProps } from "../lib/types";
 
 // displays the cards on the main page as gifs
 export default function VideoCard({ src, videoRef }: VideoCardProps) {

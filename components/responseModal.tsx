@@ -1,13 +1,6 @@
-import { TarotCard } from "./tarot_input";
 import TarotCardDisplay from "./tarot_card_display";
-
-interface ResponseModalProps {
-  question: string;
-  displayedText: string;
-  selectedCards: TarotCard[];
-  loading: boolean;
-  onClose: () => void;
-}
+import { ResponseModalProps } from "../lib/types";
+import { formatTarotResponse } from "../lib/formatTarotResponse";
 
 export default function ResponseModal({
   question,
@@ -16,26 +9,6 @@ export default function ResponseModal({
   loading,
   onClose,
 }: ResponseModalProps) {
-  function renderResponseWithTitles(text: string) {
-    const cleanedText = text.replace(/\d+\.\s*/g, "").replace(/:\s*/g, "");
-    const parts = cleanedText.split(/(\*\*[^*]+\*\*)/g);
-    return parts.map((part, idx) => {
-      if (part.startsWith("**") && part.endsWith("**")) {
-        const title = part.slice(2, -2);
-        return (
-          <p key={idx} className="mb-4">
-            <strong>{title}</strong>
-          </p>
-        );
-      }
-      return (
-        <p key={idx} className="mb-4">
-          {part}
-        </p>
-      );
-    });
-  }
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-md z-50">
       <div className="bg-white text-black rounded-3xl p-10 max-w-3xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
@@ -49,7 +22,7 @@ export default function ResponseModal({
 
         <div className="mb-8 text-lg leading-snug text-center break-words">
           {displayedText
-            ? renderResponseWithTitles(displayedText)
+            ? formatTarotResponse(displayedText)
             : "Consulting the cards..."}
         </div>
 
