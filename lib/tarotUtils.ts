@@ -1,4 +1,4 @@
-import { TarotCard } from "../components/tarot_input";
+import { TarotCard } from "./types";
 
 export function pickRandomCards(cards: TarotCard[], count = 3) {
   const copy = [...cards];
