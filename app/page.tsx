@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import TarotInput from "@/components/tarot_input";
-import VideoCard from "@/components/video_card";
+import TarotInput from "@/components/tarotInput";
+import VideoCard from "@/components/videoCard";
+import { useTypewriterText } from "@/lib/useTypewriterText";
 
 export default function HomePage() {
   const videoRefs = [
@@ -16,21 +17,9 @@ export default function HomePage() {
     videoRefs.forEach((ref) => ref.current?.play());
   }, []);
 
-  const fullText = "Your question, the Universe's answer";
-  const [displayedText, setDisplayedText] = useState("");
-  const indexRef = useRef(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (indexRef.current < fullText.length) {
-        setDisplayedText(fullText.slice(0, indexRef.current + 1));
-        indexRef.current += 1;
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
+  const displayedText = useTypewriterText(
+    "Your question, the Universe's answer"
+  );
 
   return (
     <motion.div
@@ -39,7 +28,6 @@ export default function HomePage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Main page title */}
       <div className="relative z-10 flex flex-col items-center mt-4 md:mt-24 px-4">
         <motion.h1
           className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-widest mb-6 md:mb-10 text-center"
@@ -50,7 +38,7 @@ export default function HomePage() {
           {displayedText}
           <span className="animate-pulse">|</span>
         </motion.h1>
-        {/*End of the main page title */}
+
         <motion.div
           className="w-full max-w-xl"
           initial={{ opacity: 0 }}
@@ -64,16 +52,17 @@ export default function HomePage() {
           className="flex gap-6 md:gap-12 mt-8 md:mt-14 flex-wrap justify-center"
           initial="hidden"
           animate="visible"
-          variants={{
-            hidden: {},
-          }}
         >
           {videoRefs.map((ref, i) => (
             <motion.div
               key={i}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.8 },
+                },
               }}
             >
               <VideoCard
