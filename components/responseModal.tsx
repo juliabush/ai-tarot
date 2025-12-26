@@ -1,4 +1,4 @@
-import TarotCardDisplay from "./tarot_card_display";
+import TarotCardDisplay from "./tarotCardDisplay";
 import { ResponseModalProps } from "../lib/types";
 import { formatTarotResponse } from "../lib/formatTarotResponse";
 

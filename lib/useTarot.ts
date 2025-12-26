@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import tarotCards from "@/tarot-json/tarot-loop.json";
-import { pickRandomCards } from "./tarot_utils";
+import { pickRandomCards } from "./tarotUtils";
 import { askTarot } from "./askTarot";
 import { TarotCard } from "./types";
 

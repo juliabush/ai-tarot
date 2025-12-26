@@ -1,6 +1,6 @@
 "use client";
 
-import ResponseModal from "./response_modal";
+import ResponseModal from "./responseModal";
 import { useTarot } from "../lib/useTarot";
 
 export default function TarotInput() {
