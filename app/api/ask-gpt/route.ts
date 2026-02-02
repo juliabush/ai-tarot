@@ -1,11 +1,21 @@
 export const runtime = "nodejs";
 import OpenAI from "openai";
+import { rateLimit } from "@/lib/rateLimit";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 export async function POST(req: Request) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+  const allowed = await rateLimit(ip);
+
+  if (!allowed) {
+    return new Response("Daily limit reached", { status: 429 });
+  }
+
   const { question } = await req.json();
 
   const stream = await client.responses.create({
