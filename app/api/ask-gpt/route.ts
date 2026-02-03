@@ -1,6 +1,6 @@
 export const runtime = "nodejs";
 import OpenAI from "openai";
-import { rateLimit } from "@/lib/rateLimit";
+import { rateLimit } from "../../../lib/rateLimit";
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
