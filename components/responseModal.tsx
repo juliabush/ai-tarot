@@ -11,7 +11,7 @@ export default function ResponseModal({
 }: ResponseModalProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-md z-50">
-      <div className="bg-white text-black rounded-3xl p-10 max-w-3xl w-full shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div className="bg-white text-black rounded-3xl p-10 max-w-3xl w-full mx-4 shadow-2xl max-h-[90vh] overflow-y-auto">
         <h2 className="text-3xl font-bold mb-6 text-center">
           {question.trim().endsWith("?")
             ? question.trim()
